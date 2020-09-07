@@ -9,7 +9,6 @@ use App\User;
 use App\Schools;
 use App\Classes;
 use App\Subject;
-
 class UserController extends Controller
 {
 
@@ -95,7 +94,7 @@ class UserController extends Controller
 
             $Profile                    = new User();
             $Profile->short_image       = $this->uploadImage($request->short_image);
-            $Profile->full_image        = $this->uploadImage($request->full_image);
+            $Profile->full_image        = $this->uploadImages($request->full_image);
             $Profile->name              = $request->name;
             $Profile->email             = $request->email;
             $Profile->school_id         = $request->school_id;
@@ -171,7 +170,7 @@ class UserController extends Controller
 
             if($request->full_image)
             {
-                $Profile->full_image       = $this->uploadImage($request->full_image);
+                $Profile->full_image       = $this->uploadImages($request->full_image);
             }
             $Profile->name              = $request->name;
             $Profile->email             = $request->email;
@@ -263,6 +262,23 @@ class UserController extends Controller
               $this->storage->put($this->upload_path.$fileName, file_get_contents($avatar->getRealPath()));
    
                return $fileName;
+           }
+       }
+
+
+       private function uploadImages($images)
+       {   
+           if (isset($images) && !empty($images)) 
+           {
+                $Returnimages='';
+                foreach($images as $file)
+                {
+                        $name= time().$file->getClientOriginalName();
+                        $this->storage->put($this->upload_path.$name, file_get_contents($file->getRealPath()));
+                        $Returnimages .=$name.',';
+                }
+
+                return rtrim($Returnimages,', ');
            }
        }
 }

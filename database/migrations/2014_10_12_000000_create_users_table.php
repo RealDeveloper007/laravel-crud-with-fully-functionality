@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('class_id')->unsigned()->index();
             $table->integer('subject_id')->unsigned()->index();
             $table->string('short_image',150);
-            $table->string('full_image',150);
+            $table->text('full_image');
             $table->integer('gender')->comment('1 - Male, 2 - Female');
             $table->json('interests');
             $table->timestamp('email_verified_at')->nullable();

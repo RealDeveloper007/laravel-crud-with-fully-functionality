@@ -72,7 +72,7 @@ td span {
                                     <tr>
                                     <td>{{$i}}</td>
                                     <td><img src="{{ env('USER_SHORT_IMAGE_URL').$allusers->short_image}}" width="100px"></td>
-                                    <td><img src="{{ env('USER_FULL_IMAGE_URL').$allusers->full_image}}" width="100px"></td>
+                                    <td>{!!$allusers->allimages!!}</td>
                                     <td>{{$allusers->name}}</td>
                                     <td>{{$allusers->email}}</td>
                                     <td>{{$allusers->school->school_name}}</td>

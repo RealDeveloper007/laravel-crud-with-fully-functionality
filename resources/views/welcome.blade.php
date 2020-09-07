@@ -66,6 +66,7 @@
     <body>
         <div class="flex-center position-ref full-height">
                 <div class="top-right links">
+                <a href="{{ url('/school') }}">All Schools</a>
                         <a href="{{ url('/user') }}">All Users</a>
                    
                 </div>

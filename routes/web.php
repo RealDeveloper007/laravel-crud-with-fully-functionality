@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::resource('user','UserController');
 
+Route::resource('school','SchoolController');
+
 Route::post('/get-classes','UserController@GetClasses')->name('GetClasses');
 Route::post('/get-subjects','UserController@GetSubjects')->name('GetSubjects');
 

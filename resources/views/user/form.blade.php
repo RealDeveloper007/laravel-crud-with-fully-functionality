@@ -19,7 +19,7 @@
                             <label for="name">Full Image</label>
                             <div>
                                       
-                            {{ Form::file('full_image',null, ['class' => 'form-control', 'required' => 'required']) }}
+                            {{ Form::file('full_image[]', ['class' => 'form-control', 'required' => 'required',"multiple"=>true]) }}
 
                          </div>
                 </div>

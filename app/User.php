@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Html;
 
 class User extends Authenticatable
 {
@@ -52,6 +53,26 @@ class User extends Authenticatable
             
         }
         return rtrim($interests,', ');
+ 
+     }
+
+
+    public function getAllImagesAttribute()
+    {
+        
+        $images = '';
+        
+        $userimages = $this->full_image;
+ 
+        //print_r(json_decode($this->tags)); die;
+        $ImagesArray = explode(',',$userimages);
+        foreach($ImagesArray as $key => $image)
+        {
+           
+           $images .= Html::image(env('USER_SHORT_IMAGE_URL').'/'.$image,'', [ 'width' => 100]);
+            
+        }
+        return $images;
  
      }
 

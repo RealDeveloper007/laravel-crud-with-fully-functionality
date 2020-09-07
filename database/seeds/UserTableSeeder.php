@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
             'name'              => 'test',
             'email'             => 'test@gmail.com',
             'short_image'       => '1598120480default_user_female.jpg',
-            'full_image'        => '15981621032.jpg',
+            'full_image'        => '15981621032.jpg,15981621032.jpg',
             'password'          => bcrypt('123456'),
             'school_id'         => 1,
             'class_id'          => 2,
