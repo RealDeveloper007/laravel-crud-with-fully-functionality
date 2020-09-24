@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Repositories\SchoolRepository;
 use App\Schools;
 
 class SchoolController extends Controller
 {
+    protected $schRepository;
+
+    public function __construct(SchoolRepository $schRepository)
+    {
+        $this->schRepository = $schRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,11 @@ class SchoolController extends Controller
     public function index()
     {
         //
-        $Schools = Schools::paginate(10);
+        $Schools = $this->schRepository->listAll(1);
+
+        // print_r($Schools); die;
+
+        // $Schools = Schools::paginate(10);
         return view('school/list',compact('Schools'));
     }
 
